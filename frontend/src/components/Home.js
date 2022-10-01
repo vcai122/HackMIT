@@ -5,10 +5,10 @@ function Home() {
   return (
     <div className="w-full">
       <div className="w-full h-screen flex flex-row">
-        <div className="w-full flex flex-col items-center justify-center px-32">
+        <div className="w-full flex flex-col justify-center px-32">
           <h1 className="text-6xl leading-tight font-bold">
             <span className="text-f2u-green">Fresh</span> produce <br></br>{" "}
-            Straight from the <span className="text-f2u-brown">ground</span>
+            straight from the <span className="text-f2u-brown">ground</span>
           </h1>
           <div className="font-medium text-2xl pt-12">
             Connecting local farmers and merchants to their communities, one
