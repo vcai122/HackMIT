@@ -43,7 +43,7 @@ function MarketsNavBar() {
     <div className="w-full h-6 flex flex-row">
       <div className="text-f2u-green">I'm looking for</div>
       <input
-        className="bg-f2u-tan"
+        className="bg-f2u-tan focus-visible:border-none"
         value={userSearch}
         onChange={handleSearchChange}
       />

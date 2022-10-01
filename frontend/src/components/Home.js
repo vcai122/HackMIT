@@ -1,5 +1,6 @@
 import React from "react";
 import Produce from "../assets/produce_home.png";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
   return (
@@ -32,6 +33,7 @@ function Home() {
             }
             action={"Browse Markets"}
             color={"f2u-green"}
+            link={"/markets"}
           />
         </div>
         <div>
@@ -42,24 +44,29 @@ function Home() {
             }
             action={"Register your store"}
             color={"f2u-orange"}
+            // TODO: update link
+            link={"/markets"}
           />
-          <span className="w-0 h-0 bg-f2u-orange" />{" "}
-          {/* to trigger tailwind being able to recognize color when used implicitly */}
         </div>
       </div>
     </div>
   );
 }
-function JoinBlurb({ title, blurb, action, color }) {
+function JoinBlurb({ title, blurb, action, color, link }) {
+  const navigate = useNavigate();
   return (
     <div>
       <h1 className="text-3xl font-bold">{title}</h1>
       <p className="py-4">{blurb}</p>
       <button
+        onClick={() => navigate(link)}
         className={`bg-${color} text-white w-52 text-left pl-6 py-2 rounded-md`}
       >
         {action}
       </button>
+      <span className="w-0 h-0 bg-f2u-orange" />{" "}
+      <span className="w-0 h-0 bg-f2u-green" />{" "}
+      {/* to trigger tailwind being able to recognize color when used implicitly */}
     </div>
   );
 }
