@@ -47,6 +47,9 @@ function Home() {
             // TODO: update link
             link={"/markets"}
           />
+          <span className="w-0 h-0 bg-f2u-green" />{" "}
+          <span className="w-0 h-0 bg-f2u-orange" />{" "}
+          {/* to trigger tailwind being able to recognize color when used implicitly */}
         </div>
       </div>
     </div>
