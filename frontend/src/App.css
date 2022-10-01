@@ -1,4 +1,4 @@
 .home-image-clip {
-  clip-path: polygon(0 0, 0 100%, 100% 0, 100px 0);
-  /* -webkit-clip-path: polygon(0 0, 0 100px, 100px 0, 100px 0); */
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 40% 100%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 40% 100%);
 }
