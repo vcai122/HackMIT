@@ -10,7 +10,6 @@ from django.core import serializers
 from market.models import Market, Merchant, Stand, Item
 from geopy.geocoders import Nominatim
 
-@login_required
 def get_markets(request):
     markets = []
     for market in Market.objects.all():
@@ -24,7 +23,7 @@ def get_markets(request):
                 'lat': location.latitude,
                 'lng': location.longitude
             }
-            obj['location'] = coordinates
+            obj['coordinates'] = coordinates
         except:
             pass
         stand_pictures = []
