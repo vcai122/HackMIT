@@ -1,38 +1,20 @@
-.App {
-  text-align: center;
+.home-image-clip {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 40% 100%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 40% 100%);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.filled-green-button-style {
+  @apply bg-f2u-green hover:bg-transparent text-white hover:text-f2u-green border-f2u-green border-2 transition duration-150 font-bold text-xl text-left pl-4 py-3 rounded-md h-14
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.outlined-green-button-style {
+  @apply bg-transparent hover:bg-f2u-green text-f2u-green hover:text-white border-f2u-green border-2 transition duration-150 font-bold text-xl text-left pl-4 py-3 rounded-md h-14
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.filled-orange-button-style {
+  @apply bg-f2u-orange hover:bg-transparent text-white hover:text-f2u-orange border-f2u-orange border-2 transition duration-150 font-bold text-xl text-left pl-4 py-3 rounded-md h-14
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.outlined-orange-button-style {
+  @apply bg-transparent hover:bg-f2u-orange text-f2u-orange hover:text-white border-f2u-orange border-2 transition duration-150 font-bold text-xl text-left pl-4 py-3 rounded-md h-14
 }
