@@ -1,5 +1,6 @@
 import json
 
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.http import Http404, JsonResponse, HttpResponse
 from django.core import serializers
@@ -9,7 +10,7 @@ from django.core import serializers
 from market.models import Market, Merchant, Stand, Item
 from geopy.geocoders import Nominatim
 
-
+@login_required
 def get_markets(request):
     markets = []
     for market in Market.objects.all():
@@ -18,12 +19,12 @@ def get_markets(request):
         }
         try:
             locator = Nominatim(user_agent="myGeocoder")
-            target = locator.geocode(market.location)
-            location = {
-                'lat': target.latitude,
-                'lng': target.longitude
+            location = locator.geocode(market.location)
+            coordinates = {
+                'lat': location.latitude,
+                'lng': location.longitude
             }
-            obj['location'] = location
+            obj['location'] = coordinates
         except:
             pass
         stand_pictures = []

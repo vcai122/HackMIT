@@ -8,6 +8,7 @@ django = "*"
 djangorestframework = "*"
 geopy = "*"
 django-cors-headers = "*"
+django-crispy-forms = "*"
 
 [dev-packages]
 
