@@ -6,8 +6,8 @@ import { useState } from "react";
 
 function ConsumerPortal() {
   return (
-    <div>
-      <div className="w-full h-screen flex flex-col px-32 pt-16 space-y-8">
+    <div className="px-32 pt-16">
+      <div className="w-full h-screen flex flex-col space-y-8">
         <h1 className="text-4xl leading-tight font-bold">Hi, Vincent!</h1>
         <h1 className="text-3xl leading-tight font-bold">Your Markets</h1>
         <MarketDescription />

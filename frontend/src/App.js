@@ -4,6 +4,8 @@ import Home from "./components/Home";
 import Markets from "./components/Markets";
 import ConsumerPortal from "./components/ConsumerPortal";
 import MerchantPortal from "./components/MerchantPortal";
+import MarketAnalytics from "./components/MarketAnalytics";
+import RecordSales from "./components/RecordSales";
 
 function App() {
   return (
@@ -13,6 +15,8 @@ function App() {
         <Route path="markets" element={<Markets />} />
         <Route path="consumer-portal" element={<ConsumerPortal />} />
         <Route path="merchant-portal" element={<MerchantPortal />} />
+        <Route path="market-analytics" element={<MarketAnalytics />} />
+        <Route path="record-sales" element={<RecordSales />} />
       </Routes>
     </BrowserRouter>
   );
