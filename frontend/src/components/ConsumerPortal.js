@@ -1,8 +1,7 @@
 import React from "react";
 import Market from "../assets/market.png";
-import GreenFilledButton from "./GreenFilledButton";
-import GreenOutlinedButton from "./GreenOutlinedButton";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function ConsumerPortal() {
   return (
@@ -18,6 +17,7 @@ function ConsumerPortal() {
 }
 
 function MarketDescription() {
+  const navigate = useNavigate();
   return (
     <div className="w-full flex flex-row space-x-10 mt-2 mb-10">
       <img
@@ -40,12 +40,16 @@ function MarketDescription() {
           </p>
         </div>
         <div className="h-full space-y-2">
-          <GreenFilledButton
-            text={"Visit Website"}
-          />
-          <GreenOutlinedButton
-            text={"Unsubscribe"}
-          />
+          <button
+            onClick={() => navigate()}
+            className={'filled-green-button-style w-56'}>
+            Visit Website
+          </button>
+          <button
+            onClick={() => navigate()}
+            className={'outlined-green-button-style w-56'}>
+            Unsubscribe
+          </button>
         </div>
     </div>
   );
