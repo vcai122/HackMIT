@@ -1,37 +1,50 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { GoogleMap, LoadScript, MarkerF } from "@react-google-maps/api";
+import axios from "axios";
 
 function Markets() {
-  const locations = [
-    {
-      name: "Central Square Farmer’s Market",
-      location: "76 Bishop Allen Dr, Cambridge, MA 02139",
-      coordinates: {
-        lat: 42.3652605409035,
-        lng: -71.10163399470396,
-      },
-      hours: "Mondays 12 PM - 6 PM",
-      description:
-        "Located in the midst of the bustling commercial and cultural hub that is Cambridge’s Central Square, this long-running market features over two dozen Massachusetts farmers and food producers offering a vibrant selection of delicious produce, protein, baked goods, ready-to-eat meals, alongside a host of other locally made products. Mass Farmers Markets, with support from the Central Square Business Improvement District, hosts this farmers market along the entire block of Norfolk St. between Mass Ave. and Bishop Allen Dr. right near H-Mart and Graffiti Alley. Come through and say hello, and support your local food system!",
-      stand_pictures: [
-        "https://source.unsplash.com/user/c_v_r",
-        "https://source.unsplash.com/user/c_v_r",
-        "https://source.unsplash.com/user/c_v_r",
-      ],
-    },
-    {
-      name: "Central Square Farmer’s Market22222",
-      location: "testingblahblahblah",
-      coordinates: {
-        lat: 42.3652605409035,
-        lng: -71.10163399470396,
-      },
-      hours: "Saturdays 12 PM - 6 PM",
-      description: "there is some new description here",
-      stand_pictures: [],
-    },
-  ];
+  const [locations, setLocations] = useState([]);
+  useEffect(() => {
+    axios
+      .get(`http://127.0.0.1:8000/markets`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => {
+        setLocations(res.data);
+      });
+  }, []);
+  // const locations = [
+  //   {
+  //     name: "Central Square Farmer’s Market",
+  //     location: "76 Bishop Allen Dr, Cambridge, MA 02139",
+  //     coordinates: {
+  //       lat: 42.3652605409035,
+  //       lng: -71.10163399470396,
+  //     },
+  //     hours: "Mondays 12 PM - 6 PM",
+  //     description:
+  //       "Located in the midst of the bustling commercial and cultural hub that is Cambridge’s Central Square, this long-running market features over two dozen Massachusetts farmers and food producers offering a vibrant selection of delicious produce, protein, baked goods, ready-to-eat meals, alongside a host of other locally made products. Mass Farmers Markets, with support from the Central Square Business Improvement District, hosts this farmers market along the entire block of Norfolk St. between Mass Ave. and Bishop Allen Dr. right near H-Mart and Graffiti Alley. Come through and say hello, and support your local food system!",
+  //     stand_pictures: [
+  //       "https://source.unsplash.com/user/c_v_r",
+  //       "https://source.unsplash.com/user/c_v_r",
+  //       "https://source.unsplash.com/user/c_v_r",
+  //     ],
+  //   },
+  //   {
+  //     name: "Central Square Farmer’s Market22222",
+  //     location: "testingblahblahblah",
+  //     coordinates: {
+  //       lat: 42.3652605409035,
+  //       lng: -71.10163399470396,
+  //     },
+  //     hours: "Saturdays 12 PM - 6 PM",
+  //     description: "there is some new description here",
+  //     stand_pictures: [],
+  //   },
+  // ];
   const moreInfo = {
     stock: [
       "carrots",
@@ -117,11 +130,10 @@ function MarketComponent({ item }) {
           <div className="pt-1">{address}</div>
           <div className="flex flex-row pt-1">
             <div className="font-bold">
-              {{ weekday } === address.substring(0, address.indexOf(" ")) ? (
+              {/* {{ weekday } === address.substring(0, address.indexOf(" ")) ? (
                 <span className="text-f2u-green">Open</span>
-              ) : (
-                <span className="text-f2u-orange">Closed</span>
-              )}
+              ) : ( */}
+              <span className="text-f2u-orange">Closed</span>
             </div>
             <div className="italic pl-3">{item.hours}</div>
           </div>
@@ -149,7 +161,7 @@ function MarketComponent({ item }) {
           </div> */}
         </div>
         <div className="w-1/4 flex flex-col pr-10">
-          <img
+          {/* <img
             className="pt-2"
             src={item.stand_pictures[0]}
             alt="market stand"
@@ -158,7 +170,7 @@ function MarketComponent({ item }) {
             className="pt-2"
             src={item.stand_pictures[1]}
             alt="market stand"
-          />
+          /> */}
         </div>
       </div>
     </div>
