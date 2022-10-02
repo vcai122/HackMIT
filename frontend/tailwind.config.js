@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     fontFamily: {
       'lora': 'Lora',
-      'roboto': 'Roboto'
+      'ibm-plex-sans': 'IBM Plex Sans'
     },
     extend: {
       colors: {

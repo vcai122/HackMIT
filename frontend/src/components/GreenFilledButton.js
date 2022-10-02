@@ -7,8 +7,9 @@ function GreenFilledButton({ text, link }) {
     <div>
       <button
         onClick={() => navigate(link)}
-        className={`bg-f2u-green text-white font-bold text-xl w-52 text-left pl-4 py-2 rounded-md`}
-      >
+        className={`bg-f2u-green hover:bg-transparent text-white hover:text-f2u-green border-f2u-green border-2
+          transition duration-150
+          font-bold text-xl w-56 text-left pl-4 py-3 rounded-md`}>
         {text}
       </button>
     </div>

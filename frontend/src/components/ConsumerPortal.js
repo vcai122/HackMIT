@@ -7,7 +7,7 @@ import { useState } from "react";
 function ConsumerPortal() {
   return (
     <div>
-      <div className="w-full h-screen flex flex-col px-32 pt-24 space-y-8">
+      <div className="w-full h-screen flex flex-col px-32 pt-16 space-y-8">
         <h1 className="text-4xl leading-tight font-bold">Hi, Vincent!</h1>
         <h1 className="text-3xl leading-tight font-bold">Your Markets</h1>
         <MarketDescription />
@@ -21,11 +21,11 @@ function MarketDescription() {
   return (
     <div className="w-full flex flex-row space-x-10 mt-2 mb-10">
       <img
-        className="object-cover h-64 w-2/5 rounded-md"
+        className="object-cover h-64 w-1/4 rounded-md"
         src={Market}
         alt="market"
         />
-        <div className="w-2/5 h-full flex flex-col">
+        <div className="w-1/3 h-full flex flex-col">
           <h3 className="text-2xl font-semibold mb-1">
             Central Square Farmer's Market
           </h3>
@@ -39,7 +39,7 @@ function MarketDescription() {
             Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum 
           </p>
         </div>
-        <div className="w-3/5 h-full space-y-2">
+        <div className="h-full space-y-2">
           <GreenFilledButton
             text={"Visit Website"}
           />

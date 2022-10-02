@@ -7,8 +7,9 @@ function OrangeOutlinedButton({ text, link }) {
     <div>
       <button
         onClick={() => navigate(link)}
-        className={`text-f2u-orange text-xl font-bold border-2 border-f2u-orange w-52 text-left pl-4 py-2 rounded-md`}
-      >
+        className={`bg-transparent hover:bg-f2u-orange text-f2u-orange hover:text-white border-f2u-orange border-2
+          transition duration-150
+          font-bold text-xl w-56 text-left pl-4 py-3 rounded-md`}>
         {text}
       </button>
     </div>
