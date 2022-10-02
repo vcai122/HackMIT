@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { GoogleMap, LoadScript, MarkerF } from "@react-google-maps/api";
-// import axios from "axios";
+import axios from "axios";
 
 function Markets() {
   const [locations, setLocations] = useState([]);
@@ -17,35 +17,6 @@ function Markets() {
         setLocations(res.data);
       });
   }, []);
-  // const locations = [
-  //   {
-  //     name: "Central Square Farmer’s Market",
-  //     location: "76 Bishop Allen Dr, Cambridge, MA 02139",
-  //     coordinates: {
-  //       lat: 42.3652605409035,
-  //       lng: -71.10163399470396,
-  //     },
-  //     hours: "Mondays 12 PM - 6 PM",
-  //     description:
-  //       "Located in the midst of the bustling commercial and cultural hub that is Cambridge’s Central Square, this long-running market features over two dozen Massachusetts farmers and food producers offering a vibrant selection of delicious produce, protein, baked goods, ready-to-eat meals, alongside a host of other locally made products. Mass Farmers Markets, with support from the Central Square Business Improvement District, hosts this farmers market along the entire block of Norfolk St. between Mass Ave. and Bishop Allen Dr. right near H-Mart and Graffiti Alley. Come through and say hello, and support your local food system!",
-  //     stand_pictures: [
-  //       "https://source.unsplash.com/user/c_v_r",
-  //       "https://source.unsplash.com/user/c_v_r",
-  //       "https://source.unsplash.com/user/c_v_r",
-  //     ],
-  //   },
-  //   {
-  //     name: "Central Square Farmer’s Market22222",
-  //     location: "testingblahblahblah",
-  //     coordinates: {
-  //       lat: 42.3652605409035,
-  //       lng: -71.10163399470396,
-  //     },
-  //     hours: "Saturdays 12 PM - 6 PM",
-  //     description: "there is some new description here",
-  //     stand_pictures: [],
-  //   },
-  // ];
   return (
     <div>
       <div className="w-full h-screen flex flex-row relative">
@@ -135,15 +106,49 @@ function MarketComponent({ item }) {
         price: "$7/loaf",
       },
     ],
+    merchants: [
+      {
+        image: "urlhere",
+        name: "Cloutman Farms",
+        products: "mushrooms",
+      },
+      {
+        image: "urlhere",
+        name: "Flats Mentor Farm",
+        products: "bok choy, yu choi, water spinach & more",
+      },
+      {
+        image: "urlhere",
+        name: "C&C Lobsters & Fish",
+        products: "fish, lobsters",
+      },
+      {
+        image: "urlhere",
+        name: "Onebitesweet",
+        products: "turkish baked goods",
+      },
+      {
+        image: "urlhere",
+        name: "SamosaMan Exotic Food",
+        products: "prepared samosas to go & more",
+      },
+    ],
   };
   const [selected, setSelected] = useState(false);
   const address = item.location;
+
   let stock = moreInfo.stock;
   let stockL = stock.length;
   const colSize = Math.ceil(stockL / 3);
   let firstList = [...stock].slice(0, colSize);
   let secondList = [...stock].slice(colSize, 2 * colSize);
   let thirdList = [...stock].slice(2 * colSize, stockL);
+
+  let merchants = moreInfo.merchants;
+  let merchantsL = merchants.length;
+  let firstMerchants = [...merchants].slice(0, merchantsL / 2);
+  let secondMerchants = [...merchants].slice(merchantsL / 2, merchantsL);
+
   let weekday = new Date()
     .toLocaleDateString("en-us", { weekday: "long" })
     .concat("s");
@@ -155,9 +160,6 @@ function MarketComponent({ item }) {
           <div className="pt-1">{address}</div>
           <div className="flex flex-row pt-1">
             <div className="font-bold">
-              {/* {{ weekday } === address.substring(0, address.indexOf(" ")) ? (
-                <span className="text-f2u-green">Open</span>
-              ) : ( */}
               <span className="text-f2u-orange">Closed</span>
             </div>
             <div className="italic pl-3">{item.hours}</div>
@@ -169,7 +171,7 @@ function MarketComponent({ item }) {
               setSelected(!selected);
             }}
           >
-            More info
+            {selected ? "Hide details" : "More info"}
           </button>
           {selected && <div className="pt-1 font-bold">In stock</div>}
           {selected && (
@@ -200,6 +202,39 @@ function MarketComponent({ item }) {
               </div>
             </div>
           )}
+          {selected && (
+            <div className="pt-2 font-bold">Merchants- {merchantsL}</div>
+          )}
+          {selected && (
+            <div className="w-full flex flex-row pt-1 mb-6">
+              <div className="w-1/2 flex flex-col px-4">
+                {firstMerchants.map((e) => (
+                  <div>
+                    <img
+                      className="pt-2 text-center"
+                      src={e.image}
+                      alt="market stand"
+                    />
+                    <div className="font-bold">{e.name}</div>
+                    <div className="text-sm">{e.products}</div>
+                  </div>
+                ))}
+              </div>
+              <div className="w-1/2 flex flex-col px-4">
+                {secondMerchants.map((e) => (
+                  <div>
+                    <img
+                      className="pt-2 text-center"
+                      src={e.image}
+                      alt="market stand"
+                    />
+                    <div className="font-bold">{e.name}</div>
+                    <div className="text-sm">{e.products}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
         <div className="w-1/4 flex flex-col pr-10">
           {!selected && (
@@ -217,8 +252,21 @@ function MarketComponent({ item }) {
             />
           )}
           {selected && (
-            <button className="bg-f2u-green text-white text-center px-2 py-2 rounded-md">
+            <button className="bg-f2u-green text-white text-center px-2 py-2 rounded-md hover:bg-transparent hover:text-f2u-green border-f2u-green border-2 transition duration-150 mb-4">
               Subscribe
+            </button>
+          )}
+          {selected && (
+            <button
+              className="bg-transparent text-sm text-f2u-green text-center px-2 py-2 rounded-md hover:bg-f2u-green hover:text-white border-f2u-green border-f2u-green border-2 transition duration-150"
+              onClick={(e) => {
+                e.preventDefault();
+                window.location.href =
+                  "https://www.massfarmersmarkets.org/central";
+              }}
+              type="button"
+            >
+              Visit Website
             </button>
           )}
         </div>
