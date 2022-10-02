@@ -1,16 +1,17 @@
 import React from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function RecordSales() {
   const navigate = useNavigate();
-  const data = [
+  const [data, setData] = useState([
     { item: "Carrots", quantity: 35, date: "10/01/2022" },
     { item: "Carrots", quantity: 35, date: "10/01/2022" },
     { item: "Carrots", quantity: 35, date: "10/01/2022" },
     { item: "Carrots", quantity: 35, date: "10/01/2022" },
     { item: "Carrots", quantity: 35, date: "10/01/2022" },
     { item: "Carrots", quantity: 35, date: "10/01/2022" },
-  ];
+  ]);
   return (
     <div className="px-32 pt-16">
       <div className="w-3/4 h-full flex flex-col">
@@ -26,7 +27,7 @@ function RecordSales() {
               Registered for 1 PM - 6 PM
             </p>
             <SalesList data={data} />
-            <SalesInput />
+            <SalesInput setData={setData} />
           </div>
         </div>
         <div>
@@ -42,28 +43,45 @@ function RecordSales() {
   );
 }
 
-function SalesInput() {
-  // const handleChange = (e) => {
-  //   setter(e.target.value);
-  // };
-
+function SalesInput({ setData }) {
+  const [item, setItem] = useState([]);
+  const [quantity, setQuantity] = useState([]);
+  const [date, setDate] = useState([]);
+  const handleItemChange = (e) => {
+    setItem(e.target.value);
+  };
+  const handleQuantityChange = (e) => {
+    setQuantity(e.target.value);
+  };
+  const handleDateChange = (e) => {
+    setDate(e.target.value);
+  };
+  const appendData = () => {
+    console.log('append')
+    setData(prev => 
+      [...prev, {
+        item: item, quantity: quantity, date: date
+      }]
+    )
+  }
   return (
-    <div>
-      <div className="h-4 flex flex-row text-regular space-x-4">
+    <div className="flex flex-row">
+      <div>
+      <div className="h-4 flex flex-row text-regular space-x-4 mt-8">
         <input
           className="pl-3 w-80 bg-transparent focus:outline-none focus-visible:border-none pt-1 pr-4"
-          // value={''}
-          // onChange={}
+          value={item}
+          onChange={handleItemChange}
         />
         <input
           className="pl-3 w-48 bg-transparent focus:outline-none focus-visible:border-none pt-1 pr-4"
-          // value={''}
-          // onChange={}
+          value={quantity}
+          onChange={handleQuantityChange}
         />
         <input
           className="pl-3 w-32 bg-transparent focus:outline-none focus-visible:border-none pt-1 pr-4"
-          // value={''}
-          // onChange={}
+          value={date}
+          onChange={handleDateChange}
         />
       </div>
       <hr className="mt-1 h-[3px] bg-black mb-1" />
@@ -72,6 +90,12 @@ function SalesInput() {
         <div className="w-48 text-left pl-3 pr-4">Quantity sold</div>
         <div className="w-32 text-left pl-3 pr-4">Date</div>
       </div>
+      </div>
+      <button
+        onClick={() => appendData()}
+        className={'filled-green-button-style w-56 ml-8'}>
+          Record
+      </button>
     </div>
   );
 }
