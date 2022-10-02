@@ -1,17 +1,17 @@
 import React from "react";
 import Market from "../assets/market.png";
-import FilledButton from "./FilledButton";
-import OutlinedButton from "./OutlinedButton";
+import GreenFilledButton from "./GreenFilledButton";
+import GreenOutlinedButton from "./GreenOutlinedButton";
 import { useState } from "react";
 
 function ConsumerPortal() {
   return (
     <div>
-      <div className="w-full h-screen flex flex-col px-32 pt-32">
+      <div className="w-full h-screen flex flex-col px-32 pt-24 space-y-8">
         <h1 className="text-4xl leading-tight font-bold">Hi, Vincent!</h1>
-        <h1 className="text-3xl leading-tight font-semibold">Your Markets</h1>
+        <h1 className="text-3xl leading-tight font-bold">Your Markets</h1>
         <MarketDescription />
-        <h1 className="text-3xl leading-tight font-semibold">Merchant Contracts</h1>
+        <h1 className="text-3xl leading-tight font-bold">Merchant Contracts</h1>
       </div>
     </div>
   );
@@ -19,34 +19,32 @@ function ConsumerPortal() {
 
 function MarketDescription() {
   return (
-    <div className="w-full h-60 flex flex-row">
+    <div className="w-full flex flex-row space-x-10 mt-2 mb-10">
       <img
-        className="object-cover h-48 w-1/3"
+        className="object-cover h-64 w-2/5 rounded-md"
         src={Market}
         alt="market"
         />
-        <div className="w-1/3 h-full flex flex-col">
-          <h3 className="text-1xl font-semibold">
+        <div className="w-2/5 h-full flex flex-col">
+          <h3 className="text-2xl font-semibold mb-1">
             Central Square Farmer's Market
           </h3>
-          <p className="text-l font-regular">
+          <p className="text-xl font-regular mb-3">
             76 Bishop Allen Dr, Cambridge, MA 02139
           </p>
-          <p className="text-l font-regular italic">
+          <p className="text-xl font-regular italic mb-3">
             Mondays 12 PM - 6 PM
           </p>
-          <h4 className="text-l font-semibold">
-            Past Purchases
-          </h4>
+          <p className="text-xl font-regular mb-3">
+            Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum 
+          </p>
         </div>
-        <div className="w-1/3 h-full">
-          <FilledButton
+        <div className="w-3/5 h-full space-y-2">
+          <GreenFilledButton
             text={"Visit Website"}
-            color={"f2u-green"}
           />
-          <OutlinedButton
-            text={"Visit Website"}
-            color={"f2u-green"}
+          <GreenOutlinedButton
+            text={"Unsubscribe"}
           />
         </div>
     </div>

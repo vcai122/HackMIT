@@ -1,6 +1,8 @@
 import React from "react";
 import Produce from "../assets/produce_home.png";
 import { useNavigate } from "react-router-dom";
+import GreenFilledButton from "./GreenFilledButton";
+import OrangeFilledButton from "./OrangeFilledButton";
 
 function Home() {
   return (
@@ -24,32 +26,22 @@ function Home() {
           />
         </div>
       </div>
-      <div className="pt-28 pb-48 px-32 flex flex-row space-x-32">
+        <div className="pt-28 pb-48 px-32 flex flex-row space-x-32">
+          <div>
+            <h1 className="text-3xl font-bold">Consumers</h1>
+            <p className="py-4">Want to be more sustainable and eat healthier? Shop from farmers markets through Farm2U! We share local market events, encouraging community wellbeing and saving our planet together.</p>
+            <GreenFilledButton
+              text={"Browse markets"}
+              link={"/markets"}
+            />
+          </div>
         <div>
-          <JoinBlurb
-            title={"Consumers"}
-            blurb={
-              "Want to be more sustainable and eat healthier? Shop from farmers markets through Farm2U! We share local market events, encouraging community wellbeing and saving our planet together."
-            }
-            action={"Browse Markets"}
-            color={"f2u-green"}
-            link={"/markets"}
+          <h1 className="text-3xl font-bold">Merchants</h1>
+          <p className="py-4">Having trouble selling produce? Connecting to consumers? Or making your market stand out? Join Farm2U today! We connect consumers with markets, sharing your favorite goods with your community.</p>
+          <OrangeFilledButton
+            text={"Register your stand"}
+            link={"/"}
           />
-        </div>
-        <div>
-          <JoinBlurb
-            title={"Merchants"}
-            blurb={
-              "Having trouble selling produce? Connecting to consumers? Or making your market stand out? Join Farm2U today! We connect consumers with markets, sharing your favorite goods with your community."
-            }
-            action={"Register your store"}
-            color={"f2u-orange"}
-            // TODO: update link
-            link={"/markets"}
-          />
-          <span className="w-0 h-0 bg-f2u-green" />{" "}
-          <span className="w-0 h-0 bg-f2u-orange" />{" "}
-          {/* to trigger tailwind being able to recognize color when used implicitly */}
         </div>
       </div>
     </div>
