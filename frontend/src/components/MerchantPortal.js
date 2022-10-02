@@ -1,8 +1,7 @@
 import React from "react";
 import Market from "../assets/market.png";
-import GreenFilledButton from "./GreenFilledButton";
-import GreenOutlinedButton from "./GreenOutlinedButton";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function MerchantPortal() {
   return (
@@ -18,6 +17,7 @@ function MerchantPortal() {
 }
 
 function MarketDescription() {
+  const navigate = useNavigate();
   return (
     <div className="w-full flex flex-row space-x-10 mt-2 mb-10">
       <img
@@ -40,29 +40,42 @@ function MarketDescription() {
         </p>
       </div>
       <div className="h-full pl-12 space-y-2">
-        <GreenFilledButton
-          text={"Open Stand"}
-        />
-        <GreenFilledButton
-          text={"View Details"}
-        />
-        <GreenFilledButton
-          text={"Record Sales"}
-        />
-        <GreenOutlinedButton
-          text={"Leave Market"}
-        />
+        <button
+          onClick={() => navigate('/markets')}
+          className={'filled-green-button-style w-56'}>
+          Open stand
+        </button>
+        <button
+          onClick={() => navigate('/markets')}
+          className={'filled-green-button-style w-56'}>
+          View details
+        </button>
+        <button
+          onClick={() => navigate('/markets')}
+          className={'filled-green-button-style w-56'}>
+          Record sales
+        </button>
+        <button
+          onClick={() => navigate()}
+          className={'outlined-green-button-style w-56'}>
+          Leave market
+        </button>
       </div>
       <div className="h-full space-y-2">
-        <GreenFilledButton
-          text={"Join Market"}
-        />
-        <GreenOutlinedButton
-          text={"Create Market"}
-        />
+        <button
+          onClick={() => navigate('/markets')}
+          className={'filled-green-button-style w-56'}>
+          Join market
+        </button>
+        <button
+          onClick={() => navigate()}
+          className={'outlined-green-button-style w-56'}>
+          Create market
+        </button>
       </div>
     </div>
   );
 }
+
 
 export default MerchantPortal;
