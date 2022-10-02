@@ -45,18 +45,6 @@ function Markets() {
   //     stand_pictures: [],
   //   },
   // ];
-  const moreInfo = {
-    stock: [
-      "carrots",
-      "spinach",
-      "arugula",
-      "beets",
-      "pickles",
-      "lettuce",
-      "apples",
-      "sourdough",
-    ],
-  };
   return (
     <div>
       <div className="w-full h-screen flex flex-row relative">
@@ -111,14 +99,50 @@ function MarketsNavBar() {
 }
 
 function MarketComponent({ item }) {
+  const moreInfo = {
+    stock: [
+      {
+        item: "carrots",
+        price: "$5/lb",
+      },
+      {
+        item: "spinach",
+        price: "$6/lb",
+      },
+      {
+        item: "arugula",
+        price: "$4/lb",
+      },
+      {
+        item: "beets",
+        price: "$3/lb",
+      },
+      {
+        item: "pickles",
+        price: "$2/lb",
+      },
+      {
+        item: "lettuce",
+        price: "$2/lb",
+      },
+      {
+        item: "apples",
+        price: "$5/lb",
+      },
+      {
+        item: "sourdough",
+        price: "$7/loaf",
+      },
+    ],
+  };
+  const [selected, setSelected] = useState(false);
   const address = item.location;
-  // let stock = item.stock;
-  // let stockL = stock.length;
-  // const colSize = Math.ceil(stockL / 3);
-
-  // let firstList = [...stock].slice(0, colSize);
-  // let secondList = [...stock].slice(colSize, 2 * colSize);
-  // let thirdList = [...stock].slice(2 * colSize, stockL);
+  let stock = moreInfo.stock;
+  let stockL = stock.length;
+  const colSize = Math.ceil(stockL / 3);
+  let firstList = [...stock].slice(0, colSize);
+  let secondList = [...stock].slice(colSize, 2 * colSize);
+  let thirdList = [...stock].slice(2 * colSize, stockL);
   let weekday = new Date()
     .toLocaleDateString("en-us", { weekday: "long" })
     .concat("s");
@@ -138,27 +162,34 @@ function MarketComponent({ item }) {
             <div className="italic pl-3">{item.hours}</div>
           </div>
           <div className="pt-2 text-sm pr-8">{item.description}</div>
-          <button className="bg-f2u-green text-white text-sm text-center mx-36 py-1 rounded-md mt-3 right-0 mb-6">
+          <button
+            className="bg-f2u-green text-white text-sm text-center mx-36 py-1 rounded-md mt-3 right-0 mb-6"
+            onClick={() => {
+              setSelected(!selected);
+            }}
+          >
             More info
           </button>
-          {/* <div className="pt-2 font-bold">In stock</div> */}
-          {/* <div className="w-full flex flex-row pt-1">
-            <div className="w-1/3 flex flex-col text-sm">
-              {firstList.map((e) => (
-                <div>{e}</div>
-              ))}
+          {selected && <div className="pt-1 font-bold">In stock</div>}
+          {selected && (
+            <div className="w-full flex flex-row pt-1 mb-6">
+              <div className="w-1/3 flex flex-col text-sm">
+                {firstList.map((e) => (
+                  <div>{e}</div>
+                ))}
+              </div>
+              <div className="w-1/3 flex flex-col text-sm ">
+                {secondList.map((e) => (
+                  <div>{e}</div>
+                ))}
+              </div>
+              <div className="w-1/3 flex flex-col text-sm ">
+                {thirdList.map((e) => (
+                  <div>{e}</div>
+                ))}
+              </div>
             </div>
-            <div className="w-1/3 flex flex-col text-sm ">
-              {secondList.map((e) => (
-                <div>{e}</div>
-              ))}
-            </div>
-            <div className="w-1/3 flex flex-col text-sm ">
-              {thirdList.map((e) => (
-                <div>{e}</div>
-              ))}
-            </div>
-          </div> */}
+          )}
         </div>
         <div className="w-1/4 flex flex-col pr-10">
           {/* <img
