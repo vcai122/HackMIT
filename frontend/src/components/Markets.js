@@ -175,17 +175,26 @@ function MarketComponent({ item }) {
             <div className="w-full flex flex-row pt-1 mb-6">
               <div className="w-1/3 flex flex-col text-sm">
                 {firstList.map((e) => (
-                  <div>{e}</div>
+                  <div>
+                    <span className="font-bold text-f2u-green">{e.price}</span>{" "}
+                    {e.item}
+                  </div>
                 ))}
               </div>
               <div className="w-1/3 flex flex-col text-sm ">
                 {secondList.map((e) => (
-                  <div>{e}</div>
+                  <div>
+                    <span className="font-bold text-f2u-green">{e.price}</span>{" "}
+                    {e.item}
+                  </div>
                 ))}
               </div>
               <div className="w-1/3 flex flex-col text-sm ">
                 {thirdList.map((e) => (
-                  <div>{e}</div>
+                  <div>
+                    <span className="font-bold text-f2u-green">{e.price}</span>{" "}
+                    {e.item}
+                  </div>
                 ))}
               </div>
             </div>
