@@ -13,7 +13,7 @@ function Markets() {
         },
       })
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setLocations(res.data);
       });
   }, []);
@@ -71,83 +71,40 @@ function MarketsNavBar() {
 }
 
 function MarketComponent({ item }) {
-  const moreInfo = {
-    stock: [
-      {
-        item: "carrots",
-        price: "$5/lb",
-      },
-      {
-        item: "spinach",
-        price: "$6/lb",
-      },
-      {
-        item: "arugula",
-        price: "$4/lb",
-      },
-      {
-        item: "beets",
-        price: "$3/lb",
-      },
-      {
-        item: "pickles",
-        price: "$2/lb",
-      },
-      {
-        item: "lettuce",
-        price: "$2/lb",
-      },
-      {
-        item: "apples",
-        price: "$5/lb",
-      },
-      {
-        item: "sourdough",
-        price: "$7/loaf",
-      },
-    ],
-    merchants: [
-      {
-        image: "urlhere",
-        name: "Cloutman Farms",
-        products: "mushrooms",
-      },
-      {
-        image: "urlhere",
-        name: "Flats Mentor Farm",
-        products: "bok choy, yu choi, water spinach & more",
-      },
-      {
-        image: "urlhere",
-        name: "C&C Lobsters & Fish",
-        products: "fish, lobsters",
-      },
-      {
-        image: "urlhere",
-        name: "Onebitesweet",
-        products: "turkish baked goods",
-      },
-      {
-        image: "urlhere",
-        name: "SamosaMan Exotic Food",
-        products: "prepared samosas to go & more",
-      },
-    ],
-  };
+  let num = 1;
+  const [moreInfo, setMoreInfo] = useState({});
+  useEffect(() => {
+    axios
+      .get(`http://127.0.0.1:8000/markets/1`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => {
+        setMoreInfo(res.data);
+        console.log(moreInfo);
+      });
+  }, []);
+
   const [selected, setSelected] = useState(false);
   const address = item.location;
+  let firstList, secondList, thirdList;
+  if (moreInfo.stock) {
+    let stock = moreInfo.stock;
+    let stockL = stock.length;
+    const colSize = Math.ceil(stockL / 3);
+    firstList = [...stock].slice(0, colSize);
+    secondList = [...stock].slice(colSize, 2 * colSize);
+    thirdList = [...stock].slice(2 * colSize, stockL);
+  }
 
-  let stock = moreInfo.stock;
-  let stockL = stock.length;
-  const colSize = Math.ceil(stockL / 3);
-  let firstList = [...stock].slice(0, colSize);
-  let secondList = [...stock].slice(colSize, 2 * colSize);
-  let thirdList = [...stock].slice(2 * colSize, stockL);
-
-  let merchants = moreInfo.merchants;
-  let merchantsL = merchants.length;
-  let firstMerchants = [...merchants].slice(0, merchantsL / 2);
-  let secondMerchants = [...merchants].slice(merchantsL / 2, merchantsL);
+  let firstMerchants, secondMerchants;
+  if (moreInfo.merchants) {
+    let merchants = moreInfo.merchants;
+    let merchantsL = merchants.length;
+    firstMerchants = [...merchants].slice(0, merchantsL / 2);
+    secondMerchants = [...merchants].slice(merchantsL / 2, merchantsL);
+  }
 
   let weekday = new Date()
     .toLocaleDateString("en-us", { weekday: "long" })
@@ -169,6 +126,11 @@ function MarketComponent({ item }) {
             className="bg-f2u-green text-white text-sm text-center mx-36 py-1 rounded-md mt-3 right-0 mb-6"
             onClick={() => {
               setSelected(!selected);
+              {
+                item.name === "Central Square Farmer’s Market"
+                  ? (num = 1)
+                  : (num = 2);
+              }
             }}
           >
             {selected ? "Hide details" : "More info"}
@@ -203,7 +165,9 @@ function MarketComponent({ item }) {
             </div>
           )}
           {selected && (
-            <div className="pt-2 font-bold">Merchants- {merchantsL}</div>
+            <div className="pt-2 font-bold">
+              Merchants- {moreInfo.merchants.length}
+            </div>
           )}
           {selected && (
             <div className="w-full flex flex-row pt-1 mb-6">

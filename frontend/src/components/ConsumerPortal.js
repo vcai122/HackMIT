@@ -1,20 +1,24 @@
 import React from "react";
 import Market from "../assets/market.png";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
+import axios from "axios";
 
 function ConsumerPortal() {
-  const [data, setData] = useState([
-    {
-      name: "Johnny Appleseed",
-      contact: "(123) 456-7890",
-      market: "Central Square Farmer's Market",
-      produce: "Carrots",
-      quantity: 12,
-      pickup: "10/03/2022",
-    },
-  ]);
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    axios
+      .get(`http://127.0.0.1:8000/users/contracts`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        setData(res.data);
+      });
+  }, []);
   return (
     <div className="flex flex-col">
       <Navbar />
