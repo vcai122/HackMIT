@@ -18,20 +18,21 @@ function Home() {
                 alt="logo"
                 />
             </div>
-            <button className="text-xl leading-tight font-regular place-self-center ml-8"
+            <button className="text-xl leading-tight font-regular place-self-center ml-8 hover:underline"
               onClick={() => navigate("/markets")}>
               Browse markets
             </button>
-            <button className="text-xl text-f2u-green leading-tight font-regular place-self-center ml-8">
+            <button className="text-xl text-f2u-green leading-tight font-regular place-self-center ml-8 hover:underline"
+              onClick={() => navigate("/sign-in")}>
               Sign in
             </button>
           </div>
-          <h1 className="text-8xl leading-tight font-bold px-16 pt-48">
+          <h1 className="text-7xl leading-tight font-bold px-16 pt-48">
             <span className="text-f2u-green">Fresh</span> produce,<br></br>{" "}
-            straight from the <span className="text-f2u-brown">ground</span>
+            straight from the ground.
           </h1>
-          <div className="font-medium text-4xl px-16 pt-12">
-            Connecting local farmers and merchants to their communities, one
+          <div className="font-regular text-3xl px-16 pt-12">
+            Connecting local farmers and merchants to their communities one
             transaction at a time.
           </div>
         </div>

@@ -24,7 +24,7 @@ function SignIn() {
               val={consumerPassword}
               setter={setConsumerPassword}
             />
-            <div className="flex flex-row justify-center space-x-8">
+            <div className="flex flex-row justify-center space-x-8 pt-12">
               <button
                 onClick={() => navigate('/consumer-portal')}
                 className={'filled-green-button-style w-40'}>
@@ -49,7 +49,7 @@ function SignIn() {
               val={merchantPassword}
               setter={setMerchantPassword}
             />
-            <div className="flex flex-row justify-center space-x-8">
+            <div className="flex flex-row justify-center space-x-8 pt-12">
               <button
                 onClick={() => navigate('/merchant-portal')}
                 className={'filled-orange-button-style w-40'}>
@@ -75,7 +75,7 @@ function UserInput({ prompt, val, setter }) {
 
   return (
     <div>
-      <div className="h-4 flex flex-row text-sm space-x-4">
+      <div className="h-4 flex flex-row space-x-4">
         <div className="w-20 text-left pl-3">{prompt}</div>
         <input
           className="bg-f2u-tan focus:outline-none focus-visible:border-none pt-1 pr-20"

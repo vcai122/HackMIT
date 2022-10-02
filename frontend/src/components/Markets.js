@@ -1,21 +1,21 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { GoogleMap, LoadScript, MarkerF } from "@react-google-maps/api";
-import axios from "axios";
+// import axios from "axios";
 
 function Markets() {
   const [locations, setLocations] = useState([]);
-  useEffect(() => {
-    axios
-      .get(`http://127.0.0.1:8000/markets`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-      .then((res) => {
-        setLocations(res.data);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get(`http://127.0.0.1:8000/markets`, {
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //     })
+  //     .then((res) => {
+  //       setLocations(res.data);
+  //     });
+  // }, []);
   // const locations = [
   //   {
   //     name: "Central Square Farmer’s Market",
