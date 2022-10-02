@@ -13,7 +13,9 @@ function SignIn() {
       <div className="flex flex-row justify-center">
         <div className="flex flex-row space-x-24">
           <div className="flex flex-col justify-center">
-            <h1 className="text-4xl text-center leading-tight font-bold mb-12">For Consumers</h1>
+            <h1 className="text-4xl text-center leading-tight font-bold mb-12">
+              For Consumers
+            </h1>
             <UserInput
               prompt={"Email"}
               val={consumerEmail}
@@ -26,19 +28,23 @@ function SignIn() {
             />
             <div className="flex flex-row justify-center space-x-8 pt-12">
               <button
-                onClick={() => navigate('/consumer-portal')}
-                className={'filled-green-button-style w-40'}>
+                onClick={() => navigate("/consumer-portal")}
+                className={"filled-green-button-style w-40"}
+              >
                 Sign in
               </button>
               <button
-                onClick={() => navigate('/consumer-portal')}
-                className={'outlined-green-button-style w-40'}>
+                onClick={() => navigate("/consumer-portal")}
+                className={"outlined-green-button-style w-40"}
+              >
                 Sign up
               </button>
             </div>
           </div>
           <div className="flex flex-col">
-            <h1 className="text-4xl text-center leading-tight font-bold mb-12">For Merchants</h1>
+            <h1 className="text-4xl text-center leading-tight font-bold mb-12">
+              For Merchants
+            </h1>
             <UserInput
               prompt={"Email"}
               val={merchantEmail}
@@ -51,13 +57,15 @@ function SignIn() {
             />
             <div className="flex flex-row justify-center space-x-8 pt-12">
               <button
-                onClick={() => navigate('/merchant-portal')}
-                className={'filled-orange-button-style w-40'}>
+                onClick={() => navigate("/merchant-portal")}
+                className={"filled-orange-button-style w-40"}
+              >
                 Sign in
               </button>
               <button
-                onClick={() => navigate('/merchant-portal')}
-                className={'outlined-orange-button-style w-40'}>
+                onClick={() => navigate("/merchant-portal")}
+                className={"outlined-orange-button-style w-40"}
+              >
                 Sign up
               </button>
             </div>
