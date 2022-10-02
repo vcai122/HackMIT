@@ -17,3 +17,6 @@ def get_contracts(request):
         obj['pickup'] = contract.pickup.strftime("%Y-%m-%d")
         ret.append(obj)
     return JsonResponse(ret, safe=False)
+
+# def add_contract(request):
+

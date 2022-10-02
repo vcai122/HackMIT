@@ -1,6 +1,7 @@
 import json
 
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.shortcuts import render, get_object_or_404
 from django.http import Http404, JsonResponse, HttpResponse
 from django.core import serializers
@@ -9,6 +10,9 @@ from django.core import serializers
 # Create your views here.
 from market.models import Market, Merchant, Stand, Item
 from geopy.geocoders import Nominatim
+
+from users.models import Contract
+
 
 def get_markets(request):
     markets = []
@@ -59,3 +63,20 @@ def get_market_detail(request, pk):
         'merchants': merchants
     })
 
+
+def get_contracts(request):
+    merchant = User.objects.filter(pk=7).first().merchant
+    ret = []
+    for stand in merchant.stand_set.all():
+        for item in stand.item_set.all():
+            for contract in item.contract_set.all():
+                obj = {}
+                consumer = contract.consumer
+                obj['name'] = consumer.first_name + ' ' + consumer.last_name
+                obj['contact'] = '1234567890'
+                obj['market'] = contract.item.stand.market.name
+                obj['produce'] = contract.item.name
+                obj['quantity'] = contract.quantity
+                obj['pickup'] = contract.pickup.strftime("%Y-%m-%d")
+                ret.append(obj)
+    return JsonResponse(ret, safe=False)
