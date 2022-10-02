@@ -6,15 +6,14 @@ function Markets() {
   const locations = [
     {
       name: "Central Square Farmer’s Market",
-      address: "76 Bishop Allen Dr, Cambridge, MA 02139",
-      location: {
+      location: "76 Bishop Allen Dr, Cambridge, MA 02139",
+      coordinates: {
         lat: 42.3652605409035,
         lng: -71.10163399470396,
       },
       hours: "Mondays 12 PM - 6 PM",
       description:
         "Located in the midst of the bustling commercial and cultural hub that is Cambridge’s Central Square, this long-running market features over two dozen Massachusetts farmers and food producers offering a vibrant selection of delicious produce, protein, baked goods, ready-to-eat meals, alongside a host of other locally made products. Mass Farmers Markets, with support from the Central Square Business Improvement District, hosts this farmers market along the entire block of Norfolk St. between Mass Ave. and Bishop Allen Dr. right near H-Mart and Graffiti Alley. Come through and say hello, and support your local food system!",
-      stock: ["carrots", "spinach", "arugula", "beets", "pickles"],
       stand_pictures: [
         "https://source.unsplash.com/user/c_v_r",
         "https://source.unsplash.com/user/c_v_r",
@@ -23,25 +22,28 @@ function Markets() {
     },
     {
       name: "Central Square Farmer’s Market22222",
-      address: "testingblahblahblah",
-      location: {
+      location: "testingblahblahblah",
+      coordinates: {
         lat: 42.3652605409035,
         lng: -71.10163399470396,
       },
       hours: "Saturdays 12 PM - 6 PM",
       description: "there is some new description here",
-      stock: [
-        "carrots1",
-        "carrots2",
-        "carrots3",
-        "carrots4",
-        "carrots5",
-        "carrots6",
-        "carrots7",
-      ],
       stand_pictures: [],
     },
   ];
+  const moreInfo = {
+    stock: [
+      "carrots",
+      "spinach",
+      "arugula",
+      "beets",
+      "pickles",
+      "lettuce",
+      "apples",
+      "sourdough",
+    ],
+  };
   return (
     <div>
       <div className="w-full h-screen flex flex-row relative">
@@ -96,21 +98,23 @@ function MarketsNavBar() {
 }
 
 function MarketComponent({ item }) {
-  const address = item.address;
-  let stock = item.stock;
-  let stockL = stock.length;
-  const colSize = Math.ceil(stockL / 3);
+  const address = item.location;
+  // let stock = item.stock;
+  // let stockL = stock.length;
+  // const colSize = Math.ceil(stockL / 3);
 
-  let firstList = [...stock].slice(0, colSize);
-  let secondList = [...stock].slice(colSize, 2 * colSize);
-  let thirdList = [...stock].slice(2 * colSize, stockL);
-  let weekday = new Date().toLocaleDateString("en-us", { weekday: "long" });
+  // let firstList = [...stock].slice(0, colSize);
+  // let secondList = [...stock].slice(colSize, 2 * colSize);
+  // let thirdList = [...stock].slice(2 * colSize, stockL);
+  let weekday = new Date()
+    .toLocaleDateString("en-us", { weekday: "long" })
+    .concat("s");
   return (
     <div>
       <div className="w-full flex flex-row">
         <div className="w-3/4 flex flex-col pl-10 ">
           <h1 className="text-2xl font-bold">{item.name}</h1>
-          <div className="pt-1">{item.address}</div>
+          <div className="pt-1">{address}</div>
           <div className="flex flex-row pt-1">
             <div className="font-bold">
               {{ weekday } === address.substring(0, address.indexOf(" ")) ? (
@@ -122,8 +126,11 @@ function MarketComponent({ item }) {
             <div className="italic pl-3">{item.hours}</div>
           </div>
           <div className="pt-2 text-sm pr-8">{item.description}</div>
-          <div className="pt-2 font-bold">In stock</div>
-          <div className="w-full flex flex-row pt-1 pb-6">
+          <button className="bg-f2u-green text-white text-sm text-center mx-36 py-1 rounded-md mt-3 right-0 mb-6">
+            More info
+          </button>
+          {/* <div className="pt-2 font-bold">In stock</div> */}
+          {/* <div className="w-full flex flex-row pt-1">
             <div className="w-1/3 flex flex-col text-sm">
               {firstList.map((e) => (
                 <div>{e}</div>
@@ -139,7 +146,7 @@ function MarketComponent({ item }) {
                 <div>{e}</div>
               ))}
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="w-1/4 flex flex-col pr-10">
           <img
@@ -150,11 +157,6 @@ function MarketComponent({ item }) {
           <img
             className="pt-2"
             src={item.stand_pictures[1]}
-            alt="market stand"
-          />
-          <img
-            className="pt-2"
-            src={item.stand_pictures[2]}
             alt="market stand"
           />
         </div>
@@ -176,7 +178,7 @@ function FarmersMarketsMap({ center, locations }) {
       <LoadScript googleMapsApiKey={process.env.REACT_APP_MAPS_API_KEY}>
         <GoogleMap mapContainerStyle={mapStyles} zoom={13} center={center}>
           {locations.map((item) => {
-            return <MarkerF key={item.name} position={item.location} />;
+            return <MarkerF key={item.name} position={item.coordinates} />;
           })}
         </GoogleMap>
       </LoadScript>
