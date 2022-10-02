@@ -26,9 +26,11 @@ class Stand(models.Model):
     owner = models.ForeignKey(Merchant, on_delete=models.CASCADE)
     hours = models.CharField(max_length=255)
     picture = models.CharField(max_length=255, blank=True)
+    name = models.CharField(max_length=255)
 
     def __str__(self):
-        return self.owner.user.first_name
+        return ', '.join([item.name for item in self.item_set.all()])
+        # return self.owner.user.first_name
 
 class Item(models.Model):
     name = models.CharField(blank=False, max_length=255)
