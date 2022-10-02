@@ -5,17 +5,18 @@ import { GoogleMap, LoadScript, MarkerF } from "@react-google-maps/api";
 
 function Markets() {
   const [locations, setLocations] = useState([]);
-  // useEffect(() => {
-  //   axios
-  //     .get(`http://127.0.0.1:8000/markets`, {
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //     })
-  //     .then((res) => {
-  //       setLocations(res.data);
-  //     });
-  // }, []);
+  useEffect(() => {
+    axios
+      .get(`http://127.0.0.1:8000/markets`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        setLocations(res.data);
+      });
+  }, []);
   // const locations = [
   //   {
   //     name: "Central Square Farmer’s Market",
@@ -201,16 +202,25 @@ function MarketComponent({ item }) {
           )}
         </div>
         <div className="w-1/4 flex flex-col pr-10">
-          {/* <img
-            className="pt-2"
-            src={item.stand_pictures[0]}
-            alt="market stand"
-          />
-          <img
-            className="pt-2"
-            src={item.stand_pictures[1]}
-            alt="market stand"
-          /> */}
+          {!selected && (
+            <img
+              className="pt-2"
+              src={item.stand_pictures[0]}
+              alt="market stand"
+            />
+          )}
+          {!selected && (
+            <img
+              className="pt-2"
+              src={item.stand_pictures[1]}
+              alt="market stand"
+            />
+          )}
+          {selected && (
+            <button className="bg-f2u-green text-white text-center px-2 py-2 rounded-md">
+              Subscribe
+            </button>
+          )}
         </div>
       </div>
     </div>
