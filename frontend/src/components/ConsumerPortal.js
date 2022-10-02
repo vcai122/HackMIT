@@ -2,6 +2,7 @@ import React from "react";
 import Market from "../assets/market.png";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Navbar from "./Navbar";
 
 function ConsumerPortal() {
   const navigate = useNavigate();
@@ -10,7 +11,9 @@ function ConsumerPortal() {
     { name: "Johnny Appleseed", contact: "(123) 456-7890", market: "Central Square Farmer's Market", produce: "Spinach", quantity: 7, pickup: "10/03/2022" }
   ]
   return (
-    <div className="px-32 pt-16">
+    <div className="flex flex-col">
+      <Navbar />
+    <div className="px-32 pt-2">
       <div className="w-full h-screen flex flex-col">
         <h1 className="text-2xl text-f2u-green leading-tight font-bold pb-2">Welcome back, Vincent</h1>
         <h1 className="text-3xl leading-tight font-bold pb-2">Your Markets</h1>
@@ -33,6 +36,7 @@ function ConsumerPortal() {
             Confirm and pay
           </button>
         </div>
+      </div>
       </div>
     </div>
   );

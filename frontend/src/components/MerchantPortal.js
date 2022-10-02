@@ -2,6 +2,7 @@ import React from "react";
 import Market from "../assets/market.png";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Navbar from "./Navbar";
 
 function MerchantPortal() {
   const navigate = useNavigate();
@@ -10,7 +11,9 @@ function MerchantPortal() {
     { name: "Vincent Cai", contact: "(000) 000-0000", market: "Central Square Farmer's Market", produce: "Spinach", quantity: 7, pickup: "10/03/2022" }
   ]
   return (
-    <div className="px-32 pt-16">
+    <div className="flex flex-col">
+      <Navbar />
+    <div className="px-32 pt-2">
         <div className="w-full h-screen flex flex-col">
           <h1 className="text-2xl text-f2u-green leading-tight font-bold pb-2">Hi, Johnny!</h1>
           <h1 className="text-3xl leading-tight font-bold pb-2">Registered Markets</h1>
@@ -36,6 +39,7 @@ function MerchantPortal() {
             />
           </div>
       </div>
+    </div>
     </div>
   );
 }
