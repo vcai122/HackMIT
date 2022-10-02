@@ -26,12 +26,12 @@ function SignIn() {
             />
             <div className="flex flex-row justify-center space-x-8">
               <button
-                onClick={() => navigate()}
+                onClick={() => navigate('/consumer-portal')}
                 className={'filled-green-button-style w-40'}>
                 Sign in
               </button>
               <button
-                onClick={() => navigate()}
+                onClick={() => navigate('/consumer-portal')}
                 className={'outlined-green-button-style w-40'}>
                 Sign up
               </button>
@@ -51,12 +51,12 @@ function SignIn() {
             />
             <div className="flex flex-row justify-center space-x-8">
               <button
-                onClick={() => navigate()}
+                onClick={() => navigate('/merchant-portal')}
                 className={'filled-orange-button-style w-40'}>
                 Sign in
               </button>
               <button
-                onClick={() => navigate()}
+                onClick={() => navigate('/merchant-portal')}
                 className={'outlined-orange-button-style w-40'}>
                 Sign up
               </button>
@@ -69,7 +69,6 @@ function SignIn() {
 }
 
 function UserInput({ prompt, val, setter }) {
-
   const handleChange = (e) => {
     setter(e.target.value);
   };

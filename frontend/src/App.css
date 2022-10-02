@@ -4,17 +4,17 @@
 }
 
 .filled-green-button-style {
-  @apply bg-f2u-green hover:bg-transparent text-white hover:text-f2u-green border-f2u-green border-2 transition duration-150 font-bold text-xl text-left pl-4 py-3 rounded-md
+  @apply bg-f2u-green hover:bg-transparent text-white hover:text-f2u-green border-f2u-green border-2 transition duration-150 font-bold text-xl text-left pl-4 py-3 rounded-md h-14
 }
 
 .outlined-green-button-style {
-  @apply bg-transparent hover:bg-f2u-green text-f2u-green hover:text-white border-f2u-green border-2 transition duration-150 font-bold text-xl text-left pl-4 py-3 rounded-md
+  @apply bg-transparent hover:bg-f2u-green text-f2u-green hover:text-white border-f2u-green border-2 transition duration-150 font-bold text-xl text-left pl-4 py-3 rounded-md h-14
 }
 
 .filled-orange-button-style {
-  @apply bg-f2u-orange hover:bg-transparent text-white hover:text-f2u-orange border-f2u-orange border-2 transition duration-150 font-bold text-xl text-left pl-4 py-3 rounded-md
+  @apply bg-f2u-orange hover:bg-transparent text-white hover:text-f2u-orange border-f2u-orange border-2 transition duration-150 font-bold text-xl text-left pl-4 py-3 rounded-md h-14
 }
 
 .outlined-orange-button-style {
-  @apply bg-transparent hover:bg-f2u-orange text-f2u-orange hover:text-white border-f2u-orange border-2 transition duration-150 font-bold text-xl text-left pl-4 py-3 rounded-md
+  @apply bg-transparent hover:bg-f2u-orange text-f2u-orange hover:text-white border-f2u-orange border-2 transition duration-150 font-bold text-xl text-left pl-4 py-3 rounded-md h-14
 }
