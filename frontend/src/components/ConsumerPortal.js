@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 
 function ConsumerPortal() {
-  const data = [
+  const [data, setData] = useState([
     {
       name: "Johnny Appleseed",
       contact: "(123) 456-7890",
@@ -14,15 +14,7 @@ function ConsumerPortal() {
       quantity: 12,
       pickup: "10/03/2022",
     },
-    {
-      name: "Johnny Appleseed",
-      contact: "(123) 456-7890",
-      market: "Central Square Farmer's Market",
-      produce: "Spinach",
-      quantity: 7,
-      pickup: "10/03/2022",
-    },
-  ];
+  ]);
   return (
     <div className="flex flex-col">
       <Navbar />
